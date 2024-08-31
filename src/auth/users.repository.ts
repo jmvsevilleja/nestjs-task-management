@@ -6,16 +6,10 @@ import {
 import { AuthCredentialsDto } from './dto/auth-credentials.dto';
 import { User } from './user.entity';
 import * as bcrypt from 'bcrypt';
-import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class UsersRepository extends Repository<User> {
-  // constructor(
-  //   @InjectRepository(User)
-  //   private readonly usersRepository: Repository<User>,
-  // ) {}
-
   async createUser(authCredentialsDto: AuthCredentialsDto): Promise<void> {
     const { username, password } = authCredentialsDto;
 
